@@ -1,10 +1,10 @@
-Attribute VB_Name = "目次作成"
+Attribute VB_Name = "TableOfContents"
 '
 '目次を作る
 'フォーカスがあたっているセルを書き込み開始セルとみなし、
 '全シート名のリンク付きリストを作ります
 '
-Sub 目次作成()
+Sub TableOfContents()
     
     '変数宣言
     Dim writePlace As Range
@@ -23,7 +23,7 @@ Sub 目次作成()
     End If
     
     'シート選択状態チェック
-    If ActiveWindow.SelectedSheets.Count > 1 Then
+    If ActiveWindow.SelectedSheets.count > 1 Then
         MsgBox "複数シートが選択されています" & vbLf & _
                "不要なシート選択を解除してください"
         Exit Sub
@@ -32,7 +32,7 @@ Sub 目次作成()
     Application.ScreenUpdating = False
     
     Set writePlace = Cells(Selection.Row, Selection.Column)
-    numOfWorkSheets = ActiveWorkbook.Worksheets.Count
+    numOfWorkSheets = ActiveWorkbook.Worksheets.count
     
     '上書き確認
     If WorksheetFunction.CountA(Range(writePlace, Cells(writePlace.Row + numOfWorkSheets - 1, writePlace.Column))) > 0 Then
